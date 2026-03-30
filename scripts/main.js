@@ -1,2 +1,2 @@
-saludo: string = "¡Hola, TypeScript funciona!";
+saludo: string = "¡Hola, JavaScript funciona!";
 console.log(saludo);
