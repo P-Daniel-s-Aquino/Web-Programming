@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PaginaWebI</title>
+</head>
+<body>
+    <h1>Primer Header</h1> <!-- <hn> con 1 >= n <= 6  son encabezados-->
+    <h2>Segundo Header</h2>
+    <h3>Tercer Header</h3>
+    <h4>Cuarto Header</h4>
+    <h5>Quinto Header</h5>
+    <h6>Sexto Header</h6>
+    <h7>Septimo Header</h7> <!-- por defult solo se pueden 6 Headers -->
+    
+    <hr> <!-- Esto separa con una linea la pagina -->
+    
+    <p>Parrafo a mostrar</p> <!-- p entre corchangulos-->
+    
+    <a href="https://www.google.com">Google en la misma ventana</a> <!-- Te redirecciona a otra pagina en la misma ventana -->
+
+    <p></p>
+
+    <a target="_blank" href="https://www.google.com">Google en otra ventana</a> <!-- Te rediecciona a otra pagina con otra ventana -->
+    
+    <p></p>
+
+    <img src="https://w.wallhaven.cc/full/nk/wallhaven-nkj5q4.jpg"/> <!-- Muestra una imagen por URL o por path local-->
+    
+    <hr>
+
+    <p></p>
+    Aca va el codigo.
+
+    <form action="/formulario" method="post">
+        <!-- Pueden ser varios formularios abajo del otro, o en uno al lado del otro -->
+        <label for="nombre"> Nombre </label>
+        <input type="text" id="nombre" placeholder="Nombre">
+
+        <label for="dni"> DNI </label> <!-- Form para hacer formularios for y id para vincular dos casillas -->
+        <input type="password" id="dni" name="dni" placeholder="XX.XXX.XXX"> <!-- Placeholder para escribir dentro de la casilla DNI -->
+        <!-- Con type se le puede dar un comportamiento a la casilla, si no se pone nada se comporta como text -->
+        <br>
+        <br>
+        <textarea name="comentario" id="comentario" placeholder="Ingrese comentario" rows="3"></textarea>
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+    
+</body>
+
+    <br>
+
+    <footer>
+        Este es el pie de pagina.
+    </footer>
+
+
+</html>
