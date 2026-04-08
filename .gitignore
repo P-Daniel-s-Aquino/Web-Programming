@@ -1,4 +1,11 @@
-node_modules
-dist
+# Dependencias
+node_modules/
+
+# Archivos de compilación o distribución
+dist/
+
+# Archivos de configuración específicos del entorno
 tsconfig.json
 
+# Carpetas de proyectos o trabajos prácticos
+TP-HTML/
