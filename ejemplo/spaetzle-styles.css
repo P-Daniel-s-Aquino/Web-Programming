@@ -1,0 +1,98 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: system-ui, sans-serif; background:#121212; color:#222; }
+
+/* FONDO DE CARNE - ahora NO se desliza, queda pegado al bloque */
+.pagina-receta {
+  background-image: url("https://www.hola.com/horizon/original_aspect_ratio/6f38c743c59a-carne-setas-adobe-z.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;  /* <-- ESTA es la que hace que se mueva */
+  background-repeat: no-repeat;
+  position: relative;
+  padding-bottom: 100px;
+}
+.pagina-receta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 0;
+}
+.pagina-receta::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 150px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #f5f1e8 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+.pagina-receta > * { position: relative; z-index: 2; }
+
+.Fondo {
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px 0;
+}
+
+.Presentacion {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  max-width: 1000px;
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* IMAGEN DE LA PRESENTACIÓN AHORA EN CSS */
+.PresentacionImagen {
+  background-image: url("https://www.hola.com/horizon/landscape/08fdd98c8bb6-spatzel-adobe-portada-t.jpg"); /* versión original */
+  background-size: cover;
+  background-position: center;
+  min-height: 320px;
+}
+
+.PresentacionTexto { padding:32px 36px; display:flex; flex-direction:column; justify-content:center; gap:12px; }
+.Tag { background:#a05a2c; color:#fff; font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; padding:6px 14px; border-radius:20px; align-self:flex-start; }
+.PresentacionTexto h1 { font-size:2.2rem; color:#1f2937; font-weight:700; }
+.PresentacionTexto p { color:#4b5563; line-height:1.5; font-size:.95rem; }
+.info-receta { display:flex; gap:18px; font-size:.9rem; color:#6b4f3a; }
+
+.contenido {
+  max-width: 1000px;
+  margin: 40px auto 0;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.caja {
+  background-color: #fdf2d2;
+  background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png"), radial-gradient(circle at 20% 20%, rgba(160,90,44,0.08), transparent 50%);
+  background-blend-mode: multiply;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  border: 1px solid #e2c98f;
+}
+.caja h2 { font-size:1.3rem; margin-bottom:16px; color:#3a2a1a; border-bottom:2px solid #e8d9b0; padding-bottom:8px; }
+.ingredientes { list-style:none; }
+.ingredientes li { padding:8px 0; border-bottom:1px dashed #e5d5aa; color:#3f3221; }
+.ingredientes li::before { content:"•"; color:#a05a2c; margin-right:8px; }
+
+.pasos { list-style-type: upper-roman; padding-left: 2.8rem; }
+.pasos li { padding-left: 8px; margin-bottom:12px; line-height:1.6; color:#3f3221; }
+.pasos li::marker { color:#a05a2c; font-weight:600; }
+
+.seccion-extra { background: #f5f1e8; padding: 80px 20px; }
+.caja-extra { max-width: 800px; margin: 0 auto; background: white; padding: 32px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); text-align: center; }
+
+@media (max-width: 900px) {
+  .Presentacion { grid-template-columns:1fr; }
+  .PresentacionImagen { height:240px; }
+  .contenido { grid-template-columns:1fr; }
+}
