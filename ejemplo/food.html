@@ -1,65 +1,109 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html> <!-- Le dice al navegador que es HTML5 -->
+<html lang="es"> <!-- idioma para lectores de pantalla y SEO -->
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- clave para responsive -->
     <title>Käsespätzle</title>
-    <link rel="stylesheet" href="spaetzle-styles.css">
+    <link rel="stylesheet" href="spaetzle-styles.css"> <!-- acá carga el CSS que comentamos -->
 </head>
 <body>
 
+  <!-- === HERO CON FONDO === -->
+  <!-- .pagina-receta es el contenedor que en CSS tiene la foto de fondo, el overlay oscuro (::before) y el degradado (::after) -->
   <div class="pagina-receta">
     
+    <!-- .Fondo centra la tarjeta blanca -->
     <div class="Fondo">
-      <article class="Presentacion">
-        <div class="PresentacionImagen" role="img" aria-label="Käsespätzle"></div>
+      <section class="Presentacion">
+        <!-- Imagen decorativa. Como no es <img>, usamos role="img" y aria-label para accesibilidad -->
+        <div class="PresentacionImagen" role="img" aria-label="Spätzle con salsa de hongos"></div>
+        
         <div class="PresentacionTexto">
-          <span class="Tag">Cocina Alemana</span>
-          <h1>Käsespätzle</h1>
+          <span class="Tag">Receta casera</span>
+          <h1>Spätzle con salsa de hongos</h1>
+          <p>Una receta de origen alemán, perfecta para los días frescos. Spätzle caseros, tiernos y esponjosos, bañados en una salsa cremosa de hongos salteados con manteca, cebolla y un toque de nuez moscada.</p>
+          
+          <!-- Info rápida, en CSS está en flex con gap -->
           <div class="info-receta">
-              <span>⏱️ 40 min</span>
-              <span>👥 4 porciones</span>
-              <span>⭐ Fácil</span>
+            <span>⏱️ 40 min</span>
+            <span>👥 4 personas</span>
+            <span>⭐ Dificultad media</span>
           </div>
-          <p>Se trata de una masa a la que se le suele dar forma alargada y redondeada y vamos a mostrarte cómo se elabora. ¡Es ideal para tomar con carnes en salsa!</p>
         </div>
-      </article>
+      </section>
     </div>
 
-    <main class="contenido">
-      <aside class="caja">
+    <!-- === CONTENIDO EN 2 COLUMNAS === -->
+    <!-- .contenido en CSS es grid: 340px para ingredientes, el resto para pasos -->
+    <div class="contenido">
+      
+      <!-- Caja izquierda con textura papel -->
+      <div class="caja">
         <h2>Ingredientes</h2>
         <ul class="ingredientes">
-          <li>400g de harina</li>
-          <li>4 huevos</li>
-          <li>200 mL de agua</li>
-          <li>nuez moscada y sal</li>
+          <!-- Cada <li> recibe la viñeta naranja desde .ingredientes li::before -->
+          <li>300 g de harina 0000</li>
+          <li>3 huevos grandes y 100 ml de leche</li>
+          <li>400 g de hongos mixtos (champiñón, portobello, girgola)</li>
+          <li>200 ml de crema de leche y 1 cebolla mediana</li>
+          <li>Manteca, nuez moscada, sal, pimienta y perejil fresco</li>
         </ul>
-      </aside>
-      <article class="caja">
-        <h2>Receta</h2>
+      </div>
+
+      <!-- Caja derecha -->
+      <div class="caja">
+        <h2>Preparación</h2>
         <ol class="pasos">
-          <li>Echa en un cuenco la harina tamizada.</li>
-          <li>Incorpora los huevos, nuez moscada al gusto y sal.</li>
-          <li>Ve agregando el agua caliente poco a poco, mientras mezclas.</li>
-          <li>Pon una olla con agua al fuego y espera a que hierva.</li>
-          <li>Deja reposar la masa unos minutos y vuélcala en jarra con pico.</li>
-          <li>Pasa la masa sobre la spaetzlera y corta para que caiga en la olla.</li>
-          <li>Hazlo en tandas para que no se apelotone.</li>
-          <li>Saca los spaetzle cuando suban a la superficie.</li>
-          <li>Escurre bien y echa un poco de aceite para que no se peguen.</li>
+          <!-- list-style-type: upper-roman y color desde .pasos li::marker -->
+          <li>En un bol, batí huevos con leche, sal y nuez moscada. Incorporá la harina hasta lograr una masa chiclosa y espesa. Dejala reposar 15 minutos.</li>
+          <li>Herví abundante agua con sal. Con una spätzlera o colador de agujeros grandes, dejá caer la masa. Cocina 2-3 min hasta que floten.</li>
+          <li>En sartén grande, derretí manteca y dorá la cebolla picada. Sumá los hongos fileteados y salteá a fuego fuerte hasta dorar.</li>
+          <li>Agregá la crema, ajustá sal y pimienta. Cociná 5 minutos hasta espesar levemente.</li>
+          <li>Mezclá los spätzle escurridos con la salsa, terminá con perejil picado y serví bien caliente.</li>
         </ol>
-      </article>
-    </main>
+      </div>
+    </div>
+  </div> <!-- cierra .pagina-receta -->
 
-  </div>
-
+  <!-- === SECCIÓN EXTRA (fondo beige) === -->
   <section class="seccion-extra">
     <div class="caja-extra">
-      <h2>Otra cosa más abajo</h2>
+      <h2>Datos que no tienen nada que ver con la receta</h2>
+      <p>Porque internet es hermoso y caótico, acá van otros datos totalmente irrelevantes pero divertidos.</p>
       
-    </div>
+      <div class="tabla-wrapper"> <!-- permite scroll horizontal en móvil -->
+        <table class="tabla-nobel">
+          <thead>
+            <tr>
+              <th>Premio Nobel</th>
+              <th>Titular</th>
+              <th>Lugar</th>
+              <th>Año</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Paz</td><td>Carlos Saavedra Lamas</td><td>Buenos Aires</td><td>1936</td></tr>
+            <tr><td>Fisiología o Medicina</td><td>Bernardo Alberto Houssay</td><td>Buenos Aires</td><td>1947</td></tr>
+            <tr><td>Química</td><td>Luis Federico Leloir</td><td>Buenos Aires</td><td>1970</td></tr>
+            <tr><td>Paz</td><td>Adolfo Pérez Esquivel</td><td>Buenos Aires</td><td>1980</td></tr>
+            <tr><td>Fisiología o Medicina</td><td>César Milstein</td><td>Bahía Blanca</td><td>1984</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div> 
   </section>
+
+  <!-- === FOOTER COMENTARIOS === -->
+  <footer class="footer-comentarios">
+    <div>
+      <h3>Dejá tu comentario</h3>
+      <form id="form-comentario">
+        <textarea placeholder="¿Qué te pareció? ¿Probaste la receta?" required></textarea>
+        <input type="text" placeholder="Tu nombre" required>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </footer>
 
 </body>
 </html>

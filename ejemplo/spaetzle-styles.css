@@ -1,23 +1,32 @@
+/* === RESET BÁSICO === */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: system-ui, sans-serif; background:#121212; color:#222; }
+body { 
+  font-family: system-ui, sans-serif; 
+  background:#121212; 
+  color:#222; 
+}
 
-/* FONDO DE CARNE - ahora NO se desliza, queda pegado al bloque */
+/* === HERO CON FONDO FIJO === */
 .pagina-receta {
   background-image: url("https://www.hola.com/horizon/original_aspect_ratio/6f38c743c59a-carne-setas-adobe-z.jpg");
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;  /* <-- ESTA es la que hace que se mueva */
+  background-attachment: fixed; /* efecto parallax */
   background-repeat: no-repeat;
-  position: relative;
+  position: relative; /* para que los ::before y ::after se posicionen dentro */
   padding-bottom: 100px;
 }
+
+/* ::before crea una capa oscura sobre la foto para leer mejor el texto */
 .pagina-receta::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: 0; /* top, right, bottom, left en 0 */
   background: rgba(0,0,0,0.6);
   z-index: 0;
 }
+
+/* ::after crea un degradado abajo para fundir con la sección beige */
 .pagina-receta::after {
   content: "";
   position: absolute;
@@ -27,8 +36,11 @@ body { font-family: system-ui, sans-serif; background:#121212; color:#222; }
   z-index: 1;
   pointer-events: none;
 }
+
+/* Todo el contenido queda por encima de las dos capas */
 .pagina-receta > * { position: relative; z-index: 2; }
 
+/* === TARJETA DE PRESENTACIÓN === */
 .Fondo {
   display: flex;
   justify-content: center;
@@ -37,7 +49,7 @@ body { font-family: system-ui, sans-serif; background:#121212; color:#222; }
 
 .Presentacion {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1.1fr 1fr; /* imagen un poco más ancha que texto */
   max-width: 1000px;
   width: 100%;
   background: #fff;
@@ -46,53 +58,158 @@ body { font-family: system-ui, sans-serif; background:#121212; color:#222; }
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* IMAGEN DE LA PRESENTACIÓN AHORA EN CSS */
 .PresentacionImagen {
-  background-image: url("https://www.hola.com/horizon/landscape/08fdd98c8bb6-spatzel-adobe-portada-t.jpg"); /* versión original */
+  background-image: url("https://www.hola.com/horizon/landscape/08fdd98c8bb6-spatzel-adobe-portada-t.jpg");
   background-size: cover;
   background-position: center;
   min-height: 320px;
 }
 
-.PresentacionTexto { padding:32px 36px; display:flex; flex-direction:column; justify-content:center; gap:12px; }
-.Tag { background:#a05a2c; color:#fff; font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; padding:6px 14px; border-radius:20px; align-self:flex-start; }
+.PresentacionTexto { 
+  padding:32px 36px; 
+  display:flex; 
+  flex-direction:column; 
+  justify-content:center; 
+  gap:12px; 
+}
+.Tag { 
+  background:#a05a2c; 
+  color:#fff; 
+  font-size:.75rem; 
+  text-transform:uppercase; 
+  letter-spacing:.05em; 
+  padding:6px 14px; 
+  border-radius:20px; 
+  align-self:flex-start; 
+}
 .PresentacionTexto h1 { font-size:2.2rem; color:#1f2937; font-weight:700; }
 .PresentacionTexto p { color:#4b5563; line-height:1.5; font-size:.95rem; }
 .info-receta { display:flex; gap:18px; font-size:.9rem; color:#6b4f3a; }
 
+/* === CONTENIDO PRINCIPAL (2 columnas) === */
 .contenido {
   max-width: 1000px;
   margin: 40px auto 0;
   padding: 0 20px;
   display: grid;
-  grid-template-columns: 340px 1fr;
+  grid-template-columns: 340px 1fr; /* ingredientes | pasos */
   gap: 24px;
   align-items: start;
 }
 
+/* Caja con textura papel */
 .caja {
   background-color: #fdf2d2;
-  background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png"), radial-gradient(circle at 20% 20%, rgba(160,90,44,0.08), transparent 50%);
+  background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png"), 
+                    radial-gradient(circle at 20% 20%, rgba(160,90,44,0.08), transparent 50%);
   background-blend-mode: multiply;
   border-radius: 16px;
   padding: 28px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   border: 1px solid #e2c98f;
 }
-.caja h2 { font-size:1.3rem; margin-bottom:16px; color:#3a2a1a; border-bottom:2px solid #e8d9b0; padding-bottom:8px; }
+.caja h2 { 
+  font-size:1.3rem; 
+  margin-bottom:16px; 
+  color:#3a2a1a; 
+  border-bottom:2px solid #e8d9b0; 
+  padding-bottom:8px; 
+}
+
+/* Lista ingredientes */
 .ingredientes { list-style:none; }
-.ingredientes li { padding:8px 0; border-bottom:1px dashed #e5d5aa; color:#3f3221; }
+.ingredientes li { 
+  padding:8px 0; 
+  border-bottom:1px dashed #e5d5aa; 
+  color:#3f3221; 
+}
+/* ::before reemplaza la viñeta por un punto naranja */
 .ingredientes li::before { content:"•"; color:#a05a2c; margin-right:8px; }
 
+/* Lista pasos */
 .pasos { list-style-type: upper-roman; padding-left: 2.8rem; }
 .pasos li { padding-left: 8px; margin-bottom:12px; line-height:1.6; color:#3f3221; }
+/* ::marker estiliza el número romano */
 .pasos li::marker { color:#a05a2c; font-weight:600; }
 
+/* === SECCIÓN EXTRA === */
 .seccion-extra { background: #f5f1e8; padding: 80px 20px; }
-.caja-extra { max-width: 800px; margin: 0 auto; background: white; padding: 32px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); text-align: center; }
+.caja-extra { 
+  max-width: 800px; 
+  margin: 0 auto; 
+  background: white; 
+  padding: 32px; 
+  border-radius: 16px; 
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
+  text-align: center; 
+}
 
-@media (max-width: 900px) {
+/* === FOOTER COMENTARIOS === */
+.footer-comentarios {
+  background: #1f2937;
+  color: #f5f1e8;
+  padding: 60px 20px;
+}
+.footer-comentarios > div { max-width: 800px; margin: 0 auto; }
+.footer-comentarios h3 { font-size: 1.6rem; margin-bottom: 22px; text-align: center; }
+
+.footer-comentarios input,
+.footer-comentarios textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #374151;
+  background: #111827;
+  color: #f5f1e8;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.footer-comentarios input:focus,
+.footer-comentarios textarea:focus {
+  outline: none;
+  border-color: #a05a2c;
+  box-shadow: 0 0 0 3px rgba(160,90,44,0.3);
+}
+/* ::placeholder estiliza el texto de ayuda */
+.footer-comentarios input::placeholder,
+.footer-comentarios textarea::placeholder { color: #9ca3af; }
+
+.footer-comentarios textarea { min-height: 120px; resize: vertical; }
+.footer-comentarios button {
+  background: #a05a2c;
+  color: white;
+  border: none;
+  padding: 13px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  width: 100%;
+  transition: background 0.2s, transform 0.1s;
+}
+.footer-comentarios button:hover { background: #864a23; }
+.footer-comentarios button:active { transform: translateY(1px); }
+
+/* === TABLA OPCIONAL === */
+.tabla-wrapper { overflow-x: auto; }
+.tabla-nobel { width: 100%; border-collapse: collapse; font-size: 0.92rem; color: #3a2a1a; }
+.tabla-nobel th {
+  text-align: left;
+  padding: 10px 0;
+  font-weight: 500;
+  color: #6b4f3a;
+  border-bottom: 1px solid #d6c7a3;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: .04em;
+}
+.tabla-nobel td { padding: 10px 0; border-bottom: 1px solid #f0e6c9; }
+
+/* === RESPONSIVE (desactivado) === */
+/* @media (max-width: 900px) {
   .Presentacion { grid-template-columns:1fr; }
   .PresentacionImagen { height:240px; }
   .contenido { grid-template-columns:1fr; }
-}
+} */
