@@ -15,7 +15,7 @@ body {
     background-image: 
     /* Linear gradient sirve para usar tansiciones o gradientes de color, gradiente de fondo + imagen de fondo */
       linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(139,87,199,0.4) 100%),
-      url('/home/aschmadia/Web-Programming/img/fondo.png');
+      url('img/fondo.png');
     
     background-position: center;  /* posicionado en el centro */
     background-size: cover;       /* cubre toda la pagina con el tamaño de la imagen */
