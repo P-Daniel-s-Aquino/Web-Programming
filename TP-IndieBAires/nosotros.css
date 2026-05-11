@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  color: #eeeeee;
+  font-family: Arial, sans-serif;
+  position: relative;
+
+  /* background-color: #000; */
+  
+  background-image: 
+  /* Linear gradient sirve para usar tansiciones o gradientes de color, gradiente de fondo + imagen de fondo */
+    linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(139,87,199,0.4) 100%),
+    url('img/fondo.png');
+  
+  background-position: center;  /* posicionado en el centro */
+  background-size: cover;       /* cubre toda la pagina con el tamaño de la imagen */
+  background-repeat: no-repeat; /* no repite la imagen de fondo */
+  background-attachment: fixed; /* se mantiene fija */
+}
+
+/* 2. NAVEGACIÓN */
+.navegacion {
+  display: flex;                  /* flex convierte una lista vertical en viñetas horizontales dejando al mismo nivel el logo y las viñetas*/
+  justify-content: space-between; /* separa el logo a la izquirda de la lista de viñetas a la derecha */
+  align-items: center;            /* pone al centro las viñetas en la esquina derecha */
+  padding: 18px 30px;             /* forma el tamaño del div de navegacion */                
+
+  background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(139, 87, 199, 1) 50%, rgba(222, 31, 31, 1) 100%);
+}
+
+.logo {
+  /* logo de IndieBAires */
+  color: #fff;
+  text-decoration: none;  /* quita la decoracion de la linea de abajo */
+  font-size: 1.5rem;      /* <root em> hace que el tamaño de la letra sea 1.5 veces mas grande que el tamaño base de la pagina */
+  font-weight: bold;
+
+  /* fuente linkeada de fonts.google */
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.logo span {
+  /* seleccion del span de BAires */
+  color: #e10606; 
+}
+
+.menu {
+  display: flex;
+  gap: 28px;        /* espacio entre viñetas */ 
+  list-style: none; /* elimina la decoracion de la lista no ordenada */
+  
+  /* reseteo de margin y padding */
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: #ddd;
+  text-decoration: none;      /* elimina la decoracion del texto, el subrayado */
+  font-size: 0.9rem;
+  text-transform: uppercase;  /* mayuscula del texto */
+}
+
+.nosotros-container {
+  max-width: 800px; /* ancho máximo del contenedor */
+  margin: 40px auto; /* margen superior e inferior de 40px, centrado horizontalmente */
+  padding: 20px;      /* espacio interno del contenedor */
+  background-color: rgba(0, 0, 0, 0.6); /* fondo semitransparente para mejorar la legibilidad */
+  border-radius: 8px; /* bordes redondeados */
+  p{
+    font-size: 1.2rem; /* tamaño de fuente para el texto */
+    line-height: 1.6;   /* altura de línea para mejorar la legibilidad */
+  }
+}
