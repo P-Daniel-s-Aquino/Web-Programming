@@ -9,3 +9,7 @@ tsconfig.json
 
 # Carpetas de proyectos o trabajos prácticos
 TP-WebProgramming/
+package.json
+package-lock.json
+scripts/
+ejemplo/
