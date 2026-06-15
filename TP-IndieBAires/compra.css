@@ -5,41 +5,134 @@
 }
 
 body {
-    background-color: rgb(0, 0, 0);
-    font-family: 'Courier New', Courier, monospace;
-    padding: 24px 12px;
-    justify-content: center;
-    display: flex;
-    margin-top: 100px;
-
+    margin: 0;
+    color: #1a1a1a;
+    font-family: Arial, sans-serif;
+    position: relative;
+    background-color: #f5f5f5;
     background-image: 
-    /* Linear gradient sirve para usar tansiciones o gradientes de color, gradiente de fondo + imagen de fondo */
-      linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(139,87,199,0.4) 100%),
-      url('img/fondo.png');
-    
-    background-position: center;  /* posicionado en el centro */
-    background-size: cover;       /* cubre toda la pagina con el tamaño de la imagen */
-    background-repeat: no-repeat; /* no repite la imagen de fondo */
-    background-attachment: fixed; /* se mantiene fija */
+      linear-gradient(180deg, rgba(255,255,255,0) 60%, rgba(200,200,200,0.2) 100%),
+      url('img/fondo-claro.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-#ticket-de-compra {
-    background-color: rgb(222, 218, 213);
-    /* textura de papel - no necesita imagen externa */
+body.dark {
+    background-color: #2a2a2a;
     background-image: 
-        repeating-linear-gradient(0deg, rgba(0,0,0,0.025) 0 1px, transparent 1px 3px),
-        repeating-linear-gradient(90deg, rgba(0,0,0,0.025) 0 1px, transparent 1px 3px);
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    border-top: dotted 2px #999;
-    border-bottom: dotted 2px #999;
-    line-height: 135%;
+      linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(139,87,199,0.4) 100%),
+      url('img/fondo.png');
+    color: #f0f0f0;
+}
+
+/* NAVEGACIÓN */
+.navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 30px;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(139, 87, 199, 1) 50%, rgba(222, 31, 31, 1) 100%);
+}
+
+.logo {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 100;
+    font-family: "Playfair Display", serif;
+}
+
+.logo span {
+    color: #e10606;
+}
+
+.menu {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+}
+
+.menu a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.btn-tema {
+    background: rgba(225, 6, 6, 0.2);
+    border: 2px solid #e10606;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: 0.3s ease;
+    color: inherit;
+}
+
+.btn-tema{
+  background: rgba(225, 6, 6, 0.2);
+  transform: scale(1.1);
+}
+
+body.dark .btn-tema {
+    color: #f0f0f0;
+}
+
+/* TICKET - SIEMPRE PAPEL CLARO */
+#ticket-de-compra {
+  /* 1. Dile al navegador: este bloque es SOLO claro */
+  color-scheme: light only;
+  
+  /* 2. Fondo sólido, sin transparencias que se puedan invertir */
+  background: #fff8e7;
+  
+  /* 3. Aísla el ticket del fondo oscuro */
+  isolation: isolate;
+  
+  color: #000;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  margin: 40px auto;
+  border-top: 2px dotted #cbbda0;
+  border-bottom: 2px dotted #cbbda0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+/* fuerza TODO adentro a negro, aunque el navegador quiera invertir */
+#ticket-de-compra * {
+  color: #000;
+  border-color: #000;
+  background-color: transparent;
+}
+
+
+/* en modo oscuro solo le damos más sombra, no cambiamos color */
+body.dark #ticket-de-compra {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+}
+
+/* Todo lo interno hereda negro */
+#ticket-de-compra .Header,
+#ticket-de-compra .Header h1,
+#ticket-de-compra .Header p,
+#ticket-de-compra .Info,
+#ticket-de-compra .Info .Columna,
+#ticket-de-compra table,
+#ticket-de-compra thead th,
+#ticket-de-compra tbody td,
+#ticket-de-compra tfoot td,
+#ticket-de-compra .Footer p {
+    color: #000;
 }
 
 .Header {
     text-align: center;
     margin-bottom: 12px;
+    width: 100%;
 }
 
 .Header h1 {
@@ -64,6 +157,7 @@ body {
     font-size: 12px;
     text-align: left;
     text-transform: capitalize;
+    width: 100%;
 }
 
 .Info .Columna {
@@ -120,11 +214,18 @@ tfoot tr:last-child td {
     margin: 10px auto 6px;
     height: 36px;
     width: 90%;
-    background: repeating-linear-gradient(90deg, #000 0 2px, #fff 2px 4px, #000 4px 5px, #fff 5px 7px, #000 7px 9px, #fff 9px 11px);
-    opacity: 0.60;
+    background: repeating-linear-gradient(90deg, #000 0 2px, #fff 2px 4px, #000 4px 5px, #fff 5px 7px);
+    opacity: 0.8;
 }
 
 .Footer {
     text-align: center;
     margin-top: 12px;
+    width: 100%;
 }
+.Footer p {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #555;
+}
+

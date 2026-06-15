@@ -1,20 +1,24 @@
 body {
   margin: 0;
-  color: #eeeeee;
+  color: #1a1a1a;
   font-family: Arial, sans-serif;
   position: relative;
 
-  /* background-color: #000; */
-  
   background-image: 
-  /* Linear gradient sirve para usar tansiciones o gradientes de color, gradiente de fondo + imagen de fondo */
+    linear-gradient(180deg, rgba(255,255,255,0) 60%, rgba(200,200,200,0.2) 100%),
+    url('img/fondo-claro.png');
+  
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+body.dark {
+  background-image: 
     linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(139,87,199,0.4) 100%),
     url('img/fondo.png');
-  
-  background-position: center;  /* posicionado en el centro */
-  background-size: cover;       /* cubre toda la pagina con el tamaño de la imagen */
-  background-repeat: no-repeat; /* no repite la imagen de fondo */
-  background-attachment: fixed; /* se mantiene fija */
+  color: #f0f0f0;
 }
 
 /* 2. NAVEGACIÓN */
@@ -46,6 +50,22 @@ body {
   color: #e10606; 
 }
 
+.btn-tema {
+  background: none;
+  border: solid 2px #e10606;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 6px 12px;
+  color: inherit;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.btn-tema{
+  background: rgba(225, 6, 6, 0.2);
+  transform: scale(1.1);
+}
+
 .menu {
   display: flex;
   gap: 28px;        /* espacio entre viñetas */ 
@@ -64,13 +84,19 @@ body {
 }
 
 .nosotros-container {
-  max-width: 800px; /* ancho máximo del contenedor */
-  margin: 40px auto; /* margen superior e inferior de 40px, centrado horizontalmente */
-  padding: 20px;      /* espacio interno del contenedor */
-  background-color: rgba(0, 0, 0, 0.6); /* fondo semitransparente para mejorar la legibilidad */
-  border-radius: 8px; /* bordes redondeados */
-  p{
-    font-size: 1.2rem; /* tamaño de fuente para el texto */
-    line-height: 1.6;   /* altura de línea para mejorar la legibilidad */
-  }
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+}
+
+body.dark .nosotros-container {
+  background-color: rgba(40, 31, 55, 0.85);
+  color: #f0f0f0;
+}
+
+.nosotros-container p{
+  font-size: 1.2rem;
+  line-height: 1.6;
 }
